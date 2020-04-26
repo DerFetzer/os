@@ -54,14 +54,14 @@ ARG DAPPER_HOST_ARCH=amd64
 ARG HOST_ARCH=${DAPPER_HOST_ARCH}
 ARG ARCH=${HOST_ARCH}
 
-ARG OS_REPO=rancher
+ARG OS_REPO=derfetzer
 ARG HOSTNAME_DEFAULT=rancher
 ARG DISTRIB_ID=RancherOS
 
 ARG SELINUX_POLICY_URL=https://github.com/rancher/refpolicy/releases/download/v0.0.3/policy.29
 
-ARG KERNEL_VERSION=4.14.176-rancher
-ARG KERNEL_URL_amd64=https://github.com/rancher/os-kernel/releases/download/v${KERNEL_VERSION}/linux-${KERNEL_VERSION}-x86.tar.gz
+ARG KERNEL_VERSION=5.6.6-derfetzer
+ARG KERNEL_URL_amd64=https://github.com/derfetzer/os-kernel/releases/download/v${KERNEL_VERSION}/linux-${KERNEL_VERSION}-x86.tar.gz
 ARG KERNEL_URL_arm64=https://github.com/rancher/os-kernel/releases/download/v${KERNEL_VERSION}/linux-${KERNEL_VERSION}-arm64.tar.gz
 
 ARG BUILD_DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-1.10.3
@@ -69,7 +69,8 @@ ARG BUILD_DOCKER_URL_arm64=https://github.com/rancher/docker/releases/download/v
 
 ARG OS_RELEASES_YML=https://releases.rancher.com/os
 
-ARG OS_SERVICES_REPO=https://raw.githubusercontent.com/${OS_REPO}/os-services
+ARG OS_SERVICES_REPO=https://raw.githubusercontent.com/rancher/os-services
+ARG OS_SERVICES_REPO_BASE_VERSION=v1.5.5
 ARG IMAGE_NAME=${OS_REPO}/os
 
 ARG OS_CONSOLE=default
@@ -85,6 +86,7 @@ ARG SYSTEM_DOCKER_VERSION=17.06-ros6
 ARG SYSTEM_DOCKER_URL_amd64=https://github.com/rancher/os-system-docker/releases/download/${SYSTEM_DOCKER_VERSION}/docker-amd64-${SYSTEM_DOCKER_VERSION}.tgz
 ARG SYSTEM_DOCKER_URL_arm64=https://github.com/rancher/os-system-docker/releases/download/${SYSTEM_DOCKER_VERSION}/docker-arm64-${SYSTEM_DOCKER_VERSION}.tgz
 
+ARG USER_DOCKER_REPO=rancher
 ARG USER_DOCKER_VERSION=19.03.8
 ARG USER_DOCKER_ENGINE_VERSION=docker-${USER_DOCKER_VERSION}
 
@@ -121,6 +123,7 @@ ENV BUILD_DOCKER_URL=BUILD_DOCKER_URL_${ARCH} \
     OS_RELEASES_YML=${OS_RELEASES_YML} \
     OS_REPO=${OS_REPO} \
     OS_SERVICES_REPO=${OS_SERVICES_REPO} \
+    OS_SERVICES_REPO_BASE_VERSION=${OS_SERVICES_REPO_BASE_VERSION} \
     OS_CONSOLE=${OS_CONSOLE} \
     OS_AUTOFORMAT=${OS_AUTOFORMAT} \
     REPO_VERSION=master \
@@ -128,6 +131,7 @@ ENV BUILD_DOCKER_URL=BUILD_DOCKER_URL_${ARCH} \
     SYSTEM_DOCKER_URL=SYSTEM_DOCKER_URL_${ARCH} \
     SYSTEM_DOCKER_URL_amd64=${SYSTEM_DOCKER_URL_amd64} \
     SYSTEM_DOCKER_URL_arm64=${SYSTEM_DOCKER_URL_arm64} \
+    USER_DOCKER_REPO=${USER_DOCKER_REPO} \
     USER_DOCKER_VERSION=${USER_DOCKER_VERSION} \
     USER_DOCKER_ENGINE_VERSION=${USER_DOCKER_ENGINE_VERSION} \
     AZURE_SERVICE=${AZURE_SERVICE} \

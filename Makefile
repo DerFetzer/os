@@ -8,7 +8,7 @@ TARGETS := $(shell ls scripts | grep -vE 'clean|run|help|release*|build-moby|run
 	@mv .dapper.tmp .dapper
 
 $(TARGETS): .dapper
-	./.dapper $@
+	./.dapper $@ 2>&1 | tee $@.log
 
 trash: .dapper
 	./.dapper -m bind trash

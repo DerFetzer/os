@@ -87,7 +87,7 @@ rancher:
     - configdrive:/media/config-2
   repositories:
     core:
-      url: {{.OS_SERVICES_REPO}}/{{.REPO_VERSION}}
+      url: {{.OS_SERVICES_REPO}}/{{.OS_SERVICES_REPO_BASE_VERSION}}
   state:
     fstype: auto
     oem_fstype: auto
@@ -359,9 +359,9 @@ rancher:
       - system-volumes
     docker:
       {{if eq "amd64" .ARCH -}}
-      image: {{.OS_REPO}}/os-docker:{{.USER_DOCKER_VERSION}}{{.SUFFIX}}
+      image: {{.USER_DOCKER_REPO}}/os-docker:{{.USER_DOCKER_VERSION}}
       {{else -}}
-      image: {{.OS_REPO}}/os-docker:{{.USER_DOCKER_VERSION}}{{.SUFFIX}}
+      image: {{.USER_DOCKER_REPO}}/os-docker:{{.USER_DOCKER_VERSION}}
       {{end -}}
       command: ros user-docker
       environment:

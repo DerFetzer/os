@@ -12,7 +12,7 @@ if [ "$KERNEL_CHECK" != "0" ]; then
 
     if [ $(uname -r) != $KERNEL_VERSION ] && ! version_gt $(uname -r) $KERNEL_VERSION; then
         echo "Your host kernel must be greater than RancherOS KERNEL_VERSION"
-        exit 1
+        # exit 1
     fi
 fi
 
